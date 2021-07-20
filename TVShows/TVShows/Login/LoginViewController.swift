@@ -7,14 +7,18 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
+    
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
-    @IBAction func touchRememberMeButtonClicked(_ sender: UIButton) {
+    // MARK: - Actions
+    
+    @IBAction func touchRememberMeButtonActionHandler(_ sender: UIButton) {
         if sender.isSelected {
             sender.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
         } else {
