@@ -26,22 +26,4 @@ final class LoginViewController: UIViewController {
         }
         sender.isSelected = !sender.isSelected
     }
-    
-    
-    @IBAction func touchLoginButtonActionHandler(_ sender: UIButton) {
-        pushHomeViewController()
-    }
-    
-    @IBAction func touchRegisterButtonActionHandler(_ sender: UIButton) {
-        pushHomeViewController()
-    }
-    
-    // MARK: - private functions
-    
-    private func pushHomeViewController() {
-        let storyboard = UIStoryboard(name: "Home", bundle: .main)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
-        
-        navigationController?.pushViewController(homeViewController, animated: true)
-    }
 }

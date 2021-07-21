@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="FCH-xF-k4c">
             <objects>
-                <viewController id="gey-T7-hPx" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gey-T7-hPx" customClass="LoginViewController" customModule="TVShows" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="Qn0-sP-lok">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
