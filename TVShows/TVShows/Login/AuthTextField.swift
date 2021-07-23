@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class AuthTextField: UITextField {
+final class BottomLinedTextField: UITextField {
 
     
     // MARK: - Private functions
@@ -26,6 +26,4 @@ final class AuthTextField: UITextField {
         borderStyle = .none
         layer.addSublayer(bottomLine)
     }
-    
-    
 }

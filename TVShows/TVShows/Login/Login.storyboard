@@ -38,7 +38,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="8La-Q3-PVG" customClass="AuthTextField" customModule="TVShows">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="8La-Q3-PVG" customClass="BottomLinedTextField" customModule="TVShows" customModuleProvider="target">
                                 <rect key="frame" x="25" y="369" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MfV-zw-hHE"/>
@@ -51,7 +51,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gAt-F1-r2L" userLabel="Password" customClass="AuthTextField" customModule="TVShows">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gAt-F1-r2L" userLabel="Password" customClass="BottomLinedTextField" customModule="TVShows" customModuleProvider="target">
                                 <rect key="frame" x="25" y="429" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="qN3-LN-tro"/>
@@ -68,7 +68,7 @@
                                 <rect key="frame" x="25" y="484" width="24" height="24"/>
                                 <state key="normal" image="ic-checkbox-unselected"/>
                                 <connections>
-                                    <action selector="touchRememberMeButtonClicked:" destination="RGG-Vj-HEB" eventType="touchUpInside" id="da5-Ko-9qX"/>
+                                    <action selector="touchRememberMeButtonActionHandler:" destination="RGG-Vj-HEB" eventType="touchUpInside" id="Qf8-ce-vAf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enP-w8-0Kd">
@@ -144,6 +144,9 @@
                             <constraint firstItem="gAt-F1-r2L" firstAttribute="leading" secondItem="v2G-yh-Ggn" secondAttribute="leading" constant="25" id="zUI-QC-MLr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="rememberMeButton" destination="TKT-Lt-y6b" id="QqI-k0-PSB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAS-Ii-ncH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
