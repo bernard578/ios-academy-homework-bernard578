@@ -19,6 +19,7 @@
 		F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7426976353000F9C3D /* Assets.xcassets */; };
 		F4D93E7826976353000F9C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7626976353000F9C3D /* LaunchScreen.storyboard */; };
 		F4EAC72D269F79F3005757F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAC72C269F79F3005757F3 /* LoginViewController.swift */; };
+		F4EF4BD526AD916E0054B935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF4BD426AD916E0054B935 /* APIManager.swift */; };
 		F4F5E56826A7243700AF5246 /* LoginStackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		F4D93E7726976353000F9C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4D93E7926976353000F9C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4EAC72C269F79F3005757F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F4EF4BD426AD916E0054B935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStackView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				F484526426A8C49300EC0C72 /* Routers */,
+				F4EF4BD426AD916E0054B935 /* APIManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EF4BD526AD916E0054B935 /* APIManager.swift in Sources */,
 				F4AEA42F26A597E400D8C649 /* AuthTextField.swift in Sources */,
 				F484526626A8C4DA00EC0C72 /* UserRouter.swift in Sources */,
 				F4EAC72D269F79F3005757F3 /* LoginViewController.swift in Sources */,

@@ -38,7 +38,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="8La-Q3-PVG" customClass="AuthTextField" customModule="TVShows">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="8La-Q3-PVG" customClass="BottomLinedTextField" customModule="TVShows">
                                 <rect key="frame" x="25" y="413" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MfV-zw-hHE"/>
@@ -51,7 +51,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gAt-F1-r2L" userLabel="Password" customClass="AuthTextField" customModule="TVShows">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gAt-F1-r2L" userLabel="Password" customClass="BottomLinedTextField" customModule="TVShows">
                                 <rect key="frame" x="25" y="473" width="364" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="qN3-LN-tro"/>
@@ -154,6 +154,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="8La-Q3-PVG" id="2dO-Ea-f70"/>
                         <outlet property="passwordTextField" destination="gAt-F1-r2L" id="UFS-bM-dbf"/>
+                        <outlet property="rememberMeButton" destination="TKT-Lt-y6b" id="gul-8I-75U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAS-Ii-ncH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
