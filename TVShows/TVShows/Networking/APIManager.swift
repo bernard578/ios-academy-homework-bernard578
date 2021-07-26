@@ -27,7 +27,7 @@ class APIManager {
             .validate()
             .responseDecodable(of: UserResponse.self) {
             [weak self] dataResponse in
-            completionHandler(dataResponse.result)
+                completionHandler(dataResponse.result)
         }
     }
     
@@ -37,7 +37,7 @@ class APIManager {
             .validate()
             .responseDecodable(of: UserResponse.self) {
             [weak self] dataResponse in
-            completionHandler(dataResponse.result)
+                completionHandler(dataResponse.result)
         }
     }
 }

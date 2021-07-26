@@ -20,18 +20,19 @@ final class LoginViewController: UIViewController {
     
     private var currentUser: User?
     private var manager = APIManager()
+    private let alertController = UIAlertController(title: "Alert Controller", message: "", preferredStyle: .alert)
     
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setRememberMeButtonImages()
+        setUpAlertController()
     }
     
     // MARK: - Actions
     
     @IBAction private func touchRememberMeButtonActionHandler(_ sender: UIButton) {
-        
         sender.isSelected = !sender.isSelected
     }
         
@@ -54,9 +55,10 @@ final class LoginViewController: UIViewController {
             case .success(let user):
                 self?.currentUser = user.user
                 self?.pushHomeViewController()
-                print("ovo je ok iz login")
-                print(self?.currentUser)
             case .failure(let error):
+                self?.alertController.title = "Login error"
+                self?.alertController.message = "Login error occured"
+                self?.present(self!.alertController, animated: true, completion: nil)
                 print(error)
             }
         }
@@ -85,6 +87,9 @@ final class LoginViewController: UIViewController {
                 print("ovo je ok iz register")
                 print(self?.currentUser)
             case .failure(let error):
+                self?.alertController.title = "Registration error"
+                self?.alertController.message = "Registration error occured"
+                self?.present(self!.alertController, animated: true, completion: nil)
                 print(error)
             }
         }
@@ -106,5 +111,20 @@ private extension LoginViewController {
         
         navigationController?.pushViewController(homeViewController, animated: true
         )
+    }
+    
+    func handleSuccessfulLogin(for user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            SVProgressHUD.showError(withStatus: "Missing headers")
+            return
+        }
+        SVProgressHUD.showSuccess(withStatus: "Success")
+    }
+    
+    func setUpAlertController() {
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+            _ in NSLog("An error occured")
+        })
+        alertController.addAction(okAction)
     }
 }
