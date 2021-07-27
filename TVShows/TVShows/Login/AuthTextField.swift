@@ -26,6 +26,4 @@ final class BottomLinedTextField: UITextField {
         borderStyle = .none
         layer.addSublayer(bottomLine)
     }
-    
-    
 }
