@@ -11,6 +11,7 @@ import Alamofire
 enum UserRouter: URLRequestConvertible {
     case login(email: String, password: String)
     case register(email: String, password: String)
+    case shows(authInfo: AuthInfo)
     
     var path: String {
         switch self {
@@ -18,6 +19,8 @@ enum UserRouter: URLRequestConvertible {
             return "/users/sign_in"
         case .register:
             return "/users"
+        case .shows:
+            return "/shows"
         }
     }
     
@@ -27,6 +30,8 @@ enum UserRouter: URLRequestConvertible {
             return .post
         case .register:
             return .post
+        case .shows:
+            return .get
         }
     }
     
@@ -42,6 +47,11 @@ enum UserRouter: URLRequestConvertible {
                 "email": email,
                 "password": password
             ]
+        case .shows:
+            return [
+                "page": "1",
+                "items": "100"
+            ]
         }
     }
     
@@ -56,6 +66,12 @@ enum UserRouter: URLRequestConvertible {
         var request = URLRequest.init(url: url!)
         request.httpMethod = method.rawValue
         request.timeoutInterval = TimeInterval(10*1000)
+        switch self {
+        case .shows(let authInfo):
+            request.headers = HTTPHeaders(authInfo.headers)
+        default:
+            break
+        }
         return try URLEncoding.default.encode(request, with: parameters)
     }
 }

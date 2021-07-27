@@ -54,6 +54,8 @@ final class LoginViewController: UIViewController {
             switch dataResponse {
             case .success(let user):
                 self?.currentUser = user.user
+                guard let authInfo = APIManager.shared.authInfo else { return }
+                print(authInfo)
                 self?.pushHomeViewController()
             case .failure(let error):
                 self?.alertController.title = "Login error"
@@ -83,6 +85,7 @@ final class LoginViewController: UIViewController {
             switch dataResponse {
             case .success(let user):
                 self?.currentUser = user.user
+                let userInfo = APIManager.shared.authInfo
                 self?.pushHomeViewController()
                 print("ovo je ok iz register")
                 print(self?.currentUser)
