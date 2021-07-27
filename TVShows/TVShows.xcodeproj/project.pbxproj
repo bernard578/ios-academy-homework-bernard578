@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		46AD9EA2361E2886FAB98C31 /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84DC5D0185CFA40FBBCB82C /* Pods_TVShows.framework */; };
 		F4219335269F774A00619537 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4219334269F774A00619537 /* Login.storyboard */; };
+		F4AEA42F26A597E400D8C649 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AEA42E26A597E400D8C649 /* AuthTextField.swift */; };
 		F4D93E6C26976352000F9C3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D93E6B26976352000F9C3D /* AppDelegate.swift */; };
 		F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7426976353000F9C3D /* Assets.xcassets */; };
 		F4D93E7826976353000F9C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7626976353000F9C3D /* LaunchScreen.storyboard */; };
 		F4EAC72D269F79F3005757F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAC72C269F79F3005757F3 /* LoginViewController.swift */; };
+		F4F5E56826A7243700AF5246 /* LoginStackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,14 @@
 		4BA72EA625AAF4D42336A5E4 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
 		D84DC5D0185CFA40FBBCB82C /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4219334269F774A00619537 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F4AEA42E26A597E400D8C649 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		F4D93E6826976352000F9C3D /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D93E6B26976352000F9C3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D93E7426976353000F9C3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4D93E7726976353000F9C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4D93E7926976353000F9C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4EAC72C269F79F3005757F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStackView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 			children = (
 				F4219334269F774A00619537 /* Login.storyboard */,
 				F4EAC72C269F79F3005757F3 /* LoginViewController.swift */,
+				F4AEA42E26A597E400D8C649 /* AuthTextField.swift */,
+				F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			files = (
 				F4D93E7826976353000F9C3D /* LaunchScreen.storyboard in Resources */,
 				F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */,
+				F4F5E56826A7243700AF5246 /* LoginStackView.storyboard in Resources */,
 				F4219335269F774A00619537 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AEA42F26A597E400D8C649 /* AuthTextField.swift in Sources */,
 				F4EAC72D269F79F3005757F3 /* LoginViewController.swift in Sources */,
 				F4D93E6C26976352000F9C3D /* AppDelegate.swift in Sources */,
 			);
