@@ -9,7 +9,11 @@ import UIKit
 
 class ShowTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var titleLabel: UILabel!
+    
+    // MARK: - Lifecycle methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,13 +25,9 @@ class ShowTableViewCell: UITableViewCell {
         
         titleLabel.text = ""
     }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//    }
-
 }
+
+// MARK: - Functions
 
 extension ShowTableViewCell {
     

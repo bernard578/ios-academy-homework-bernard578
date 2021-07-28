@@ -62,7 +62,7 @@ enum UserRouter: URLRequestConvertible {
                             .asURL()
                             .appendingPathComponent(path)
                             .absoluteString.removingPercentEncoding!)
-        print(url)
+        //print(url)
         var request = URLRequest.init(url: url!)
         request.httpMethod = method.rawValue
         request.timeoutInterval = TimeInterval(10*1000)

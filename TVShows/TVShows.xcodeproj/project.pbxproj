@@ -14,8 +14,8 @@
 		F484526626A8C4DA00EC0C72 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484526526A8C4DA00EC0C72 /* UserRouter.swift */; };
 		F484526926A8C75400EC0C72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484526826A8C75400EC0C72 /* Constants.swift */; };
 		F4AEA42F26A597E400D8C649 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AEA42E26A597E400D8C649 /* AuthTextField.swift */; };
-		F4B0CFEB26A8ABF3006593F5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CFEA26A8ABF3006593F5 /* Home.storyboard */; };
-		F4B0CFFA26A8AF4A006593F5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0CFF926A8AF4A006593F5 /* HomeViewController.swift */; };
+		F4B0CFEB26A8ABF3006593F5 /* Shows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CFEA26A8ABF3006593F5 /* Shows.storyboard */; };
+		F4B0CFFA26A8AF4A006593F5 /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0CFF926A8AF4A006593F5 /* ShowsViewController.swift */; };
 		F4B0D01426A8B246006593F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0D01326A8B246006593F5 /* User.swift */; };
 		F4D93E6C26976352000F9C3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D93E6B26976352000F9C3D /* AppDelegate.swift */; };
 		F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7426976353000F9C3D /* Assets.xcassets */; };
@@ -35,8 +35,8 @@
 		F484526526A8C4DA00EC0C72 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		F484526826A8C75400EC0C72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F4AEA42E26A597E400D8C649 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
-		F4B0CFEA26A8ABF3006593F5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		F4B0CFF926A8AF4A006593F5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F4B0CFEA26A8ABF3006593F5 /* Shows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shows.storyboard; sourceTree = "<group>"; };
+		F4B0CFF926A8AF4A006593F5 /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		F4B0D01326A8B246006593F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F4D93E6826976352000F9C3D /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D93E6B26976352000F9C3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 		F4B0CFE926A8ABDF006593F5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F4B0CFEA26A8ABF3006593F5 /* Home.storyboard */,
-				F4B0CFF926A8AF4A006593F5 /* HomeViewController.swift */,
+				F4B0CFEA26A8ABF3006593F5 /* Shows.storyboard */,
+				F4B0CFF926A8AF4A006593F5 /* ShowsViewController.swift */,
 				F47A8BA426B08F4A0075D4FE /* ShowTableViewCell.swift */,
 			);
 			path = Home;
@@ -218,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D93E7826976353000F9C3D /* LaunchScreen.storyboard in Resources */,
-				F4B0CFEB26A8ABF3006593F5 /* Home.storyboard in Resources */,
+				F4B0CFEB26A8ABF3006593F5 /* Shows.storyboard in Resources */,
 				F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */,
 				F4F5E56826A7243700AF5246 /* LoginStackView.storyboard in Resources */,
 				F4219335269F774A00619537 /* Login.storyboard in Resources */,
@@ -283,7 +283,7 @@
 				F47A8BA226B05E550075D4FE /* Show.swift in Sources */,
 				F4B0D01426A8B246006593F5 /* User.swift in Sources */,
 				F47A8BA526B08F4A0075D4FE /* ShowTableViewCell.swift in Sources */,
-				F4B0CFFA26A8AF4A006593F5 /* HomeViewController.swift in Sources */,
+				F4B0CFFA26A8AF4A006593F5 /* ShowsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

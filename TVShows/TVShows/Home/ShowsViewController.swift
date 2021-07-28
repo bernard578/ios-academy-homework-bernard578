@@ -8,7 +8,7 @@
 import UIKit
 import SVProgressHUD
 
-class HomeViewController: UIViewController {
+class ShowsViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -17,34 +17,22 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     private var shows: [Show] = []
-    public var user: User?
-    public var authInfo = APIManager.shared.authInfo
+    var userResponse: UserResponse?
+    var authInfo = APIManager.shared.authInfo
     private var manager = APIManager()
     
-    
-//    init(user: User, authInfo: AuthInfo) {
-//        self.user = user
-//        self.authInfo = authInfo
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupUI()
         makeShowsRequest()
-        //print("Iz home \(authInfo)")
     }
 }
 
-
 // MARK: - Functions
 
-private extension HomeViewController {
+private extension ShowsViewController {
     
     func setupTableView() {
         tableView.delegate = self
@@ -71,11 +59,29 @@ private extension HomeViewController {
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
+// MARK: - Private functions
+
+private extension ShowsViewController {
+    
+    func setupUI() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+// MARK: - TableView Delegate
+
+extension ShowsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 
-extension HomeViewController: UITableViewDataSource {
+// MARK: - TableView DataSource
+
+extension ShowsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -90,6 +96,4 @@ extension HomeViewController: UITableViewDataSource {
         cell.configure(with: shows[indexPath.row])
         return cell
     }
-    
-    
 }

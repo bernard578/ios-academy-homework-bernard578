@@ -27,7 +27,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setRememberMeButtonImages()
-        setUpAlertController()
+        setupAlertController()
     }
     
     // MARK: - Actions
@@ -54,9 +54,7 @@ final class LoginViewController: UIViewController {
             switch dataResponse {
             case .success(let user):
                 self?.currentUser = user.user
-                guard let authInfo = APIManager.shared.authInfo else { return }
-                print(authInfo)
-                self?.pushHomeViewController()
+                self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
                 self?.alertController.title = "Login error"
                 self?.alertController.message = "Login error occured"
@@ -85,10 +83,7 @@ final class LoginViewController: UIViewController {
             switch dataResponse {
             case .success(let user):
                 self?.currentUser = user.user
-                let userInfo = APIManager.shared.authInfo
-                self?.pushHomeViewController()
-                print("ovo je ok iz register")
-                print(self?.currentUser)
+                self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
                 self?.alertController.title = "Registration error"
                 self?.alertController.message = "Registration error occured"
@@ -108,23 +103,15 @@ private extension LoginViewController {
         rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: . selected)
     }
         
-    func pushHomeViewController() {
-        let storyboard = UIStoryboard(name: "Home", bundle: .main)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+    func pushShowsViewController(userResponse: UserResponse) {
+        let storyboard = UIStoryboard(name: "Shows", bundle: .main)
+        let showsViewController = storyboard.instantiateViewController(withIdentifier: "ShowsViewController") as! ShowsViewController
+        showsViewController.userResponse = userResponse
         
-        navigationController?.pushViewController(homeViewController, animated: true
-        )
+        navigationController?.setViewControllers([showsViewController], animated: true)
     }
     
-    func handleSuccessfulLogin(for user: User, headers: [String: String]) {
-        guard let authInfo = try? AuthInfo(headers: headers) else {
-            SVProgressHUD.showError(withStatus: "Missing headers")
-            return
-        }
-        SVProgressHUD.showSuccess(withStatus: "Success")
-    }
-    
-    func setUpAlertController() {
+    func setupAlertController() {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: {
             _ in NSLog("An error occured")
         })
