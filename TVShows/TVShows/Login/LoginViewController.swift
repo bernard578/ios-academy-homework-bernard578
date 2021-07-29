@@ -26,6 +26,8 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.text = "NoviKorisnik@hotmail.com"
+        passwordTextField.text = "Korisnik123"
         setRememberMeButtonImages()
         setupAlertController()
     }

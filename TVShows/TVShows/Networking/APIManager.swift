@@ -56,4 +56,30 @@ class APIManager {
                 completionHandler(dataResponse.result)
         }
     }
+    
+    func makeReviewsRequest(showId: String, completionHandler: @escaping (Result<ReviewResponse, AFError>) -> ()) {
+        sessionManager
+            .request(UserRouter.reviews(showId: showId, authInfo: APIManager.shared.authInfo!))
+            .validate()
+            .responseDecodable(of: ReviewResponse.self) { dataResponse in
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                if let authInfo = try? AuthInfo(headers: headers) {
+                    APIManager.shared.authInfo = authInfo
+                }
+                completionHandler(dataResponse.result)
+        }
+    }
+    
+    func makePostReviewRequest(showId: String, comment: String, rating: Int, completionHandler: @escaping (Result<ReviewPostResponse, AFError>) -> ()) {
+        sessionManager
+            .request(UserRouter.postAReview(showId: showId, comment: comment, rating: rating, authInfo: APIManager.shared.authInfo!))
+            .validate()
+            .responseDecodable(of: ReviewPostResponse.self) { dataResponse in
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                if let authInfo = try? AuthInfo(headers: headers) {
+                    APIManager.shared.authInfo = authInfo
+                }
+                completionHandler(dataResponse.result)
+        }
+    }
 }

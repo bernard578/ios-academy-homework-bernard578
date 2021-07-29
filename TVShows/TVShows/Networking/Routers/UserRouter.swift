@@ -12,6 +12,8 @@ enum UserRouter: URLRequestConvertible {
     case login(email: String, password: String)
     case register(email: String, password: String)
     case shows(authInfo: AuthInfo)
+    case reviews(showId: String, authInfo: AuthInfo)
+    case postAReview(showId: String, comment: String, rating: Int, authInfo: AuthInfo)
     
     var path: String {
         switch self {
@@ -21,6 +23,11 @@ enum UserRouter: URLRequestConvertible {
             return "/users"
         case .shows:
             return "/shows"
+        case .reviews(let showId):
+            //print("/shows/\(showId.showId)/reviews")
+            return "/shows/\(showId.showId)/reviews"
+        case .postAReview:
+            return "/reviews"
         }
     }
     
@@ -32,6 +39,10 @@ enum UserRouter: URLRequestConvertible {
             return .post
         case .shows:
             return .get
+        case .reviews:
+            return .get
+        case .postAReview:
+            return .post
         }
     }
     
@@ -52,6 +63,16 @@ enum UserRouter: URLRequestConvertible {
                 "page": "1",
                 "items": "100"
             ]
+        case .reviews(let showId):
+            return [
+                "showId": showId
+            ]
+        case .postAReview(let showId, let comment, let rating, _):
+            return [
+                "show_id": showId,
+                "comment": comment,
+                "rating": rating,
+            ]
         }
     }
     
@@ -68,6 +89,10 @@ enum UserRouter: URLRequestConvertible {
         request.timeoutInterval = TimeInterval(10*1000)
         switch self {
         case .shows(let authInfo):
+            request.headers = HTTPHeaders(authInfo.headers)
+        case .reviews(_, let authInfo):
+            request.headers = HTTPHeaders(authInfo.headers)
+        case .postAReview(_, _, _, let authInfo):
             request.headers = HTTPHeaders(authInfo.headers)
         default:
             break

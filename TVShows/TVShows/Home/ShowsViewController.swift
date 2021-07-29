@@ -20,6 +20,7 @@ class ShowsViewController: UIViewController {
     var userResponse: UserResponse?
     var authInfo = APIManager.shared.authInfo
     private var manager = APIManager()
+    private var showReviews: [Review] = []
     
     // MARK: - Lifecycle methods
     
@@ -67,6 +68,29 @@ private extension ShowsViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func pushShowDetailsViewController(id: String) {
+        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+        let currentShow = shows.first{$0.id == id}
+        showDetailsViewController.showId = id
+        print(showDetailsViewController.showId!)
+        showDetailsViewController.show = currentShow
+        manager.makeReviewsRequest(showId: id) {
+            [weak self] dataResponse in
+                SVProgressHUD.dismiss()
+                switch dataResponse {
+                case .success(let reviewsResponse):
+                    self?.showReviews = reviewsResponse.reviews
+                    showDetailsViewController.reviews = reviewsResponse.reviews
+                case .failure(let error):
+                    print(error)
+                }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.navigationController?.pushViewController(showDetailsViewController, animated: true)
+        }
+    }
 }
 
 // MARK: - TableView Delegate
@@ -75,6 +99,9 @@ extension ShowsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let show = shows[indexPath.row]
+        pushShowDetailsViewController(id: show.id)
+        
     }
     
 }
