@@ -29,7 +29,6 @@ final class LoginViewController: UIViewController {
         emailTextField.text = "NoviKorisnik@hotmail.com"
         passwordTextField.text = "Korisnik123"
         setRememberMeButtonImages()
-        setupAlertController()
     }
     
     // MARK: - Actions
@@ -58,13 +57,10 @@ final class LoginViewController: UIViewController {
                 self?.currentUser = user.user
                 self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
-                self?.alertController.title = "Login error"
-                self?.alertController.message = "Login error occured"
-                self?.present(self!.alertController, animated: true, completion: nil)
+                self?.alert(title: "Login error", message: "Login error occurred")
                 print(error)
             }
         }
-        
     }
     
     @IBAction private func touchRegisterButtonActionHandler(_ sender: UIButton) {
@@ -87,9 +83,7 @@ final class LoginViewController: UIViewController {
                 self?.currentUser = user.user
                 self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
-                self?.alertController.title = "Registration error"
-                self?.alertController.message = "Registration error occured"
-                self?.present(self!.alertController, animated: true, completion: nil)
+                self?.alert(title: "Registration error", message: "Registration error occured")
                 print(error)
             }
         }
@@ -113,10 +107,17 @@ private extension LoginViewController {
         navigationController?.setViewControllers([showsViewController], animated: true)
     }
     
-    func setupAlertController() {
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        addAlertAction(alertController: alertController)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func addAlertAction(alertController: UIAlertController) {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: {
             _ in NSLog("An error occured")
         })
         alertController.addAction(okAction)
     }
+    
 }

@@ -24,7 +24,6 @@ class WriteAReviewViewController: UIViewController {
     private var ratingButtons: [UIButton] = []
     private var currentRating: Int = 0
     private var manager = APIManager()
-    private let alertController = UIAlertController(title: "Alert Controller", message: "", preferredStyle: .alert)
     var showId: String!
     var authInfo = APIManager.shared.authInfo
     
@@ -32,7 +31,6 @@ class WriteAReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAlertController()
         ratingButtons = [ratingButton1, ratingButton2, ratingButton3, ratingButton4, ratingButton5]
         var i = 1
         for ratingButton in ratingButtons {
@@ -46,9 +44,7 @@ class WriteAReviewViewController: UIViewController {
     
     @IBAction func touchSubmitButtonActionHandler(_ sender: UIButton) {
         if currentRating == 0 {
-            alertController.title = "Submit error"
-            alertController.message = "Select a rating"
-            present(alertController, animated: true, completion: nil)
+            alert(title: "Submit error", message: "Select a rating")
             return
         }
         guard
@@ -65,14 +61,13 @@ class WriteAReviewViewController: UIViewController {
         let numberOfStars = sender.tag
         currentRating = numberOfStars
         ratingButtons
-            .forEach({
-            (item) in
+            .forEach { (item) in
                 if item.tag <= numberOfStars {
                 item.setImage(UIImage(named: "ic-star-selected"), for: .normal)
                 } else {
                     item.setImage(UIImage(named:"ic-star-deselected"), for: .normal)
                 }
-                })
+            }
     }
 }
 
@@ -83,14 +78,7 @@ private extension WriteAReviewViewController {
     @objc func didSelectClose() {
             dismiss(animated: true, completion: nil) // push <-> pop; present <->
         }
-    
-    func setupAlertController() {
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
-            _ in NSLog("An error occured")
-        })
-        alertController.addAction(okAction)
-    }
-    
+        
     func addNavigationLeftBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Close",
@@ -111,10 +99,22 @@ private extension WriteAReviewViewController {
 //                print(response)
                 self?.didSelectClose()
             case .failure(let error):
-                self?.alertController.title = "Review error"
-                self?.alertController.message = "Error while writing a review"
+                self?.alert(title: "Review error", message: "Error while writing a review")
                 print(error)
             }
         }
+    }
+    
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        addAlertAction(alertController: alertController)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func addAlertAction(alertController: UIAlertController) {
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+            _ in NSLog("An error occured")
+        })
+        alertController.addAction(okAction)
     }
 }

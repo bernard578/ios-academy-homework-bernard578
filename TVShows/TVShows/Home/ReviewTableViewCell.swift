@@ -29,23 +29,24 @@ class ReviewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         ratingStars = [ratingStar1, ratingStar2, ratingStar3, ratingStar4, ratingStar5]
         
-        var i = 0
-        for ratingStar in ratingStars {
-            ratingStar.tag = i
-            i = i + 1
-        }
+        ratingStars
+            .enumerated()
+            .forEach { (index, item) in
+                item.tag = index
+            }
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         emailLabel.text = ""
         reviewDescriptionLabel.text = ""
         imageUrl?.image = UIImage(named: "splash-top-left")
         
         ratingStars
-            .forEach({
-            (item) in
-                item.image = UIImage(named: "ic-star-deselected")
-                })
+            .forEach {
+                $0.image = UIImage(named: "ic-star-deselected")
+            }
     }
 }
 
@@ -61,11 +62,10 @@ extension ReviewTableViewCell {
     func setRating(stars: Int, ratingStars: [UIImageView]) {
         ratingStars
             .enumerated()
-            .forEach({
-            (index, item) in
+            .forEach { (index, item) in
                 if stars >  index {
                     item.image = UIImage(named: "ic-star-selected")
                 }
-            })
+            }
     }
 }

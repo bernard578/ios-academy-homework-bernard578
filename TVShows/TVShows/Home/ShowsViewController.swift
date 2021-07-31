@@ -42,16 +42,12 @@ private extension ShowsViewController {
     
     func makeShowsRequest() {
         SVProgressHUD.show()
-        manager.makeShowsRequest() {
-        [weak self] dataResponse in
+        manager.makeShowsRequest() { [weak self] dataResponse in
             SVProgressHUD.dismiss()
             switch dataResponse {
             case .success(let shows):
                 self?.shows = shows.shows
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-                //print(self?.shows)
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -76,20 +72,7 @@ private extension ShowsViewController {
         showDetailsViewController.showId = id
         print(showDetailsViewController.showId!)
         showDetailsViewController.show = currentShow
-        manager.makeReviewsRequest(showId: id) {
-            [weak self] dataResponse in
-                SVProgressHUD.dismiss()
-                switch dataResponse {
-                case .success(let reviewsResponse):
-                    self?.showReviews = reviewsResponse.reviews
-                    showDetailsViewController.reviews = reviewsResponse.reviews
-                case .failure(let error):
-                    print(error)
-                }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.navigationController?.pushViewController(showDetailsViewController, animated: true)
-        }
+        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
 }
 

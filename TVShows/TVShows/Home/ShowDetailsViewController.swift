@@ -28,7 +28,7 @@ class ShowDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        makeReviewsRequest()
     }
     
     // MARK: - Actions
@@ -56,6 +56,19 @@ private extension ShowDetailsViewController {
         present(navigationController, animated: true)
     }
     
+    func makeReviewsRequest() {
+        SVProgressHUD.show()
+        manager.makeReviewsRequest(showId: showId) { [weak self] dataResponse in
+                SVProgressHUD.dismiss()
+                switch dataResponse {
+                case .success(let reviewsResponse):
+                    self?.reviews = reviewsResponse.reviews
+                    self?.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
 }
 
 // MARK: - TableViewDelegate
@@ -75,11 +88,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 550
-        } else {
-            return 100
-        }
+        return UITableView.automaticDimension
     }
     
     
@@ -89,9 +98,6 @@ extension ShowDetailsViewController: UITableViewDelegate {
 
 extension ShowDetailsViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reviews.count + 1
     }
@@ -99,7 +105,6 @@ extension ShowDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ShowDetailsTableViewCell.self), for: indexPath) as! ShowDetailsTableViewCell
-            cell.rating = Double((show?.averageRating)!)
             cell.configure(with: show!)
             return cell
         } else {

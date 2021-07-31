@@ -17,19 +17,12 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var authInfo = APIManager.shared.authInfo
-    var rating: Double!
-    private var manager = APIManager()
-    private var reviews: [Review] = []
 
     // MARK: - Lifecycle methods
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
         
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         descriptionLabel.text = ""
         averageRating.text = ""
     }
@@ -42,8 +35,9 @@ extension ShowDetailsTableViewCell {
     
     func configure(with show: Show) {
         descriptionLabel.text = show.description
-        averageRating.text = "\(show.noOfReviews) REVIEWS, \(Double(show.averageRating!)) AVERAGE"
-        ratingView.setRoundedRating(rating)
+        averageRating.text = "\(show.noOfReviews) REVIEWS, \(show.averageRating) AVERAGE"
+        ratingView.rating = show.averageRating
+        ratingView.setRoundedRating(Double(show.averageRating))
         ratingView.isUserInteractionEnabled = false
     }
 }
