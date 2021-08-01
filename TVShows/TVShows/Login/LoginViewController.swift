@@ -11,7 +11,7 @@ import SVProgressHUD
 final class LoginViewController: UIViewController {
     
     // MARK: - Outlets
-    
+    @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet weak var rememberMeButton: UIButton!
     @IBOutlet private weak var emailTextField: BottomLinedTextField!
     @IBOutlet private weak var passwordTextField: BottomLinedTextField!
@@ -57,6 +57,7 @@ final class LoginViewController: UIViewController {
                 self?.currentUser = user.user
                 self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
+                self?.startWrongCredentialsAnimation()
                 self?.alert(title: "Login error", message: "Login error occurred")
                 print(error)
             }
@@ -118,6 +119,34 @@ private extension LoginViewController {
             _ in NSLog("An error occured")
         })
         alertController.addAction(okAction)
+    }
+    
+    func startWrongCredentialsAnimation() {
+        shakeTextField(textField: emailTextField)
+        shakeTextField(textField: passwordTextField)
+        animateLoginButtonColor(button: loginButton)
+    }
+    
+    func shakeTextField(textField: UITextField) {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.1
+        shakeAnimation.repeatCount = 4
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 5, y: textField.center.y))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 5, y: textField.center.y))
+        textField.layer.add(shakeAnimation, forKey: "position")
+    }
+    
+    func animateLoginButtonColor(button: UIButton) {
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0.0,
+            options: [.autoreverse],
+            animations: {
+            button.layer.backgroundColor = UIColor.red.cgColor
+        }, completion: { (finished) in
+            button.layer.backgroundColor = UIColor.white.cgColor
+        })
     }
     
 }
