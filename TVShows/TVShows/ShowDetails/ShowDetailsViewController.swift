@@ -7,6 +7,7 @@
 
 import UIKit
 import SVProgressHUD
+import KeychainAccess
 
 class ShowDetailsViewController: UIViewController {
     
@@ -29,6 +30,7 @@ class ShowDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         makeReviewsRequest()
+        
     }
     
     // MARK: - Actions

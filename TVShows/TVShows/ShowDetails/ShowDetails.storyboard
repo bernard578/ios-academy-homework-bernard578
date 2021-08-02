@@ -28,26 +28,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-Zq-3Ya">
-                                                    <rect key="frame" x="5" y="5" width="404" height="300"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-Zq-3Ya">
+                                                    <rect key="frame" x="5" y="5" width="404" height="368"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="hD3-3y-NUS"/>
+                                                        <constraint firstAttribute="height" constant="400" id="hD3-3y-NUS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ShowDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4k-wp-E6m">
-                                                    <rect key="frame" x="5" y="315" width="404" height="20.5"/>
+                                                    <rect key="frame" x="5" y="383" width="404" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-Q4-51N">
-                                                    <rect key="frame" x="5" y="350.5" width="85.5" height="26.5"/>
+                                                    <rect key="frame" x="5" y="398" width="85.5" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X reviews, Y average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm0-SM-shM">
-                                                    <rect key="frame" x="5" y="382" width="158" height="21"/>
+                                                    <rect key="frame" x="5" y="403" width="158" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -81,6 +81,7 @@
                                             <outlet property="averageRating" destination="zm0-SM-shM" id="Y5n-oV-UFy"/>
                                             <outlet property="descriptionLabel" destination="c4k-wp-E6m" id="iGX-nw-tWv"/>
                                             <outlet property="ratingView" destination="usH-jC-kAZ" id="Iuo-0D-ulV"/>
+                                            <outlet property="showImage" destination="yaX-Zq-3Ya" id="khQ-PY-qrn"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="100" id="8iJ-eG-Acw" customClass="ReviewTableViewCell" customModule="TVShows" customModuleProvider="target">
@@ -90,7 +91,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="3et-6K-YPi">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3et-6K-YPi">
                                                     <rect key="frame" x="5" y="5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Pdv-zd-l3P"/>
@@ -167,13 +168,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="emailLabel" destination="HGg-Rh-Dtt" id="lIa-0w-FSP"/>
-                                            <outlet property="imageUrl" destination="3et-6K-YPi" id="XGz-EV-jjK"/>
                                             <outlet property="ratingStar1" destination="bbM-1N-fZK" id="ILA-8z-I8C"/>
                                             <outlet property="ratingStar2" destination="l20-e7-Ef8" id="ylI-PI-gle"/>
                                             <outlet property="ratingStar3" destination="mje-ip-luI" id="kLr-GT-JCy"/>
                                             <outlet property="ratingStar4" destination="tQU-NR-hPh" id="5d5-5Q-7j3"/>
                                             <outlet property="ratingStar5" destination="9to-1P-TX7" id="HRK-PM-Tgl"/>
                                             <outlet property="reviewDescriptionLabel" destination="IA0-vn-9gu" id="VXc-z9-QU3"/>
+                                            <outlet property="userImage" destination="3et-6K-YPi" id="UoB-8z-QYl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -239,7 +240,6 @@
     </scenes>
     <resources>
         <image name="ic-star-deselected" width="24" height="24"/>
-        <image name="splash-top-left" width="140" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

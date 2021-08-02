@@ -50,9 +50,13 @@ class APIManager {
     
     func makeShowsRequest(completionHandler: @escaping (Result<ShowResponse, AFError>) -> ()) {
         sessionManager
-            .request(UserRouter.shows(authInfo: APIManager.shared.authInfo!))
+            .request(UserRouter.shows(authInfo: (KeychainAccess.shared.retrieve())!))
             .validate()
             .responseDecodable(of: ShowResponse.self) { dataResponse in
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                if let authInfo = try? AuthInfo(headers: headers) {
+                    APIManager.shared.authInfo = authInfo
+                }
                 completionHandler(dataResponse.result)
         }
     }

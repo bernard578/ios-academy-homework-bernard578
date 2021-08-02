@@ -11,6 +11,7 @@ class ShowTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
+    @IBOutlet private weak var showImage: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     
     // MARK: - Lifecycle methods
@@ -33,5 +34,8 @@ extension ShowTableViewCell {
     
     func configure(with show: Show) {
         titleLabel.text = show.title
+        showImage.kf.setImage(
+            with: URL(string: show.imageUrl),
+            placeholder: UIImage(named: "ic-show-placeholder-vertical"))
     }
 }

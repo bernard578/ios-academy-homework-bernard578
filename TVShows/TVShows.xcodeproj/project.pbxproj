@@ -29,6 +29,7 @@
 		F4D93E7526976353000F9C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7426976353000F9C3D /* Assets.xcassets */; };
 		F4D93E7826976353000F9C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D93E7626976353000F9C3D /* LaunchScreen.storyboard */; };
 		F4EAC72D269F79F3005757F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAC72C269F79F3005757F3 /* LoginViewController.swift */; };
+		F4EDD25726B81FBE0068AE95 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDD25626B81FBE0068AE95 /* KeychainAccess.swift */; };
 		F4EF4BD526AD916E0054B935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF4BD426AD916E0054B935 /* APIManager.swift */; };
 		F4F5E56826A7243700AF5246 /* LoginStackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		F4D93E7726976353000F9C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4D93E7926976353000F9C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4EAC72C269F79F3005757F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F4EDD25626B81FBE0068AE95 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
 		F4EF4BD426AD916E0054B935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F4F5E56726A7243700AF5246 /* LoginStackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStackView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,16 +106,10 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		F442A44226B3243B0033FFA6 /* Review */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Review;
-			sourceTree = "<group>";
-		};
 		F484526326A8C48600EC0C72 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F48DD0B326B1E22700814F26 /* ShowDetailsTableViewCell.swift */,
 				F484526426A8C49300EC0C72 /* Routers */,
 				F4EF4BD426AD916E0054B935 /* APIManager.swift */,
 			);
@@ -134,14 +130,6 @@
 				F4B0CFEA26A8ABF3006593F5 /* Shows.storyboard */,
 				F4B0CFF926A8AF4A006593F5 /* ShowsViewController.swift */,
 				F47A8BA426B08F4A0075D4FE /* ShowTableViewCell.swift */,
-				F48DD0AD26B1D4AC00814F26 /* ShowDetailsViewController.swift */,
-				F48DD0B026B1DA1D00814F26 /* ShowDetails.storyboard */,
-				F48DD0B326B1E22700814F26 /* ShowDetailsTableViewCell.swift */,
-				F4008A6426B2C9E300A0264B /* ReviewTableViewCell.swift */,
-				F442A43F26B322930033FFA6 /* WriteAReviewViewController.swift */,
-				F442A43C26B31EAD0033FFA6 /* Review.storyboard */,
-				F442A44226B3243B0033FFA6 /* Review */,
-				F442A44626B33A2B0033FFA6 /* RatingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -177,10 +165,14 @@
 		F4D93E6A26976352000F9C3D /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
-				F484526326A8C48600EC0C72 /* Networking */,
 				F4B0D01226A8B237006593F5 /* Models */,
-				F4B0CFE926A8ABDF006593F5 /* Home */,
+				F484526326A8C48600EC0C72 /* Networking */,
 				F4219333269F771D00619537 /* Login */,
+				F4B0CFE926A8ABDF006593F5 /* Home */,
+				F4EDD25B26B843440068AE95 /* ShowDetails */,
+				F4EDD25A26B843210068AE95 /* Review */,
+				F442A44626B33A2B0033FFA6 /* RatingView.swift */,
+				F4EDD25626B81FBE0068AE95 /* KeychainAccess.swift */,
 				F4D93E6B26976352000F9C3D /* AppDelegate.swift */,
 				F4D93E7426976353000F9C3D /* Assets.xcassets */,
 				F4D93E7626976353000F9C3D /* LaunchScreen.storyboard */,
@@ -188,6 +180,25 @@
 				F484526826A8C75400EC0C72 /* Constants.swift */,
 			);
 			path = TVShows;
+			sourceTree = "<group>";
+		};
+		F4EDD25A26B843210068AE95 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				F442A43C26B31EAD0033FFA6 /* Review.storyboard */,
+				F4008A6426B2C9E300A0264B /* ReviewTableViewCell.swift */,
+				F442A43F26B322930033FFA6 /* WriteAReviewViewController.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		F4EDD25B26B843440068AE95 /* ShowDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F48DD0B026B1DA1D00814F26 /* ShowDetails.storyboard */,
+				F48DD0AD26B1D4AC00814F26 /* ShowDetailsViewController.swift */,
+			);
+			path = ShowDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EDD25726B81FBE0068AE95 /* KeychainAccess.swift in Sources */,
 				F4EF4BD526AD916E0054B935 /* APIManager.swift in Sources */,
 				F4AEA42F26A597E400D8C649 /* AuthTextField.swift in Sources */,
 				F484526626A8C4DA00EC0C72 /* UserRouter.swift in Sources */,

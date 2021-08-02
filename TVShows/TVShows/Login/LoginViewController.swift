@@ -55,6 +55,9 @@ final class LoginViewController: UIViewController {
             switch dataResponse {
             case .success(let user):
                 self?.currentUser = user.user
+                if self!.rememberMeButton.isSelected {
+                    KeychainAccess.shared.store(authInfo: APIManager.shared.authInfo!)
+                }
                 self?.pushShowsViewController(userResponse: user)
             case .failure(let error):
                 self?.startWrongCredentialsAnimation()

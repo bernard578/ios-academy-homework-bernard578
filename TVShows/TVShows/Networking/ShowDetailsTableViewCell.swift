@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
+    @IBOutlet private weak var showImage: UIImageView!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var averageRating: UILabel!
     @IBOutlet private weak var ratingView: RatingView!
@@ -39,6 +41,9 @@ extension ShowDetailsTableViewCell {
         ratingView.rating = show.averageRating
         ratingView.setRoundedRating(Double(show.averageRating))
         ratingView.isUserInteractionEnabled = false
+        showImage.kf.setImage(
+            with: URL(string: show.imageUrl),
+            placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
     }
 }
 

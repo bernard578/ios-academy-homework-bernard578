@@ -13,7 +13,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var reviewDescriptionLabel: UILabel!
-    @IBOutlet private weak var imageUrl: UIImageView?
+    @IBOutlet private weak var userImage: UIImageView!
     @IBOutlet private weak var ratingStar1: UIImageView!
     @IBOutlet private weak var ratingStar2: UIImageView!
     @IBOutlet private weak var ratingStar3: UIImageView!
@@ -41,7 +41,7 @@ class ReviewTableViewCell: UITableViewCell {
         
         emailLabel.text = ""
         reviewDescriptionLabel.text = ""
-        imageUrl?.image = UIImage(named: "splash-top-left")
+        userImage?.image = UIImage(named: "splash-top-left")
         
         ratingStars
             .forEach {
@@ -52,11 +52,15 @@ class ReviewTableViewCell: UITableViewCell {
 
 // MARK: - Functions
 extension ReviewTableViewCell {
+    
     func configure(with review: Review) {
         emailLabel.text = review.user.email
         reviewDescriptionLabel.text = review.comment
-        imageUrl?.image = UIImage(named: "splash-top-left")
         setRating(stars:review.rating,ratingStars: ratingStars)
+        guard let userImageUrl = review.user.imageUrl else { return }
+        userImage.kf.setImage(
+            with: URL(string: userImageUrl),
+            placeholder: UIImage(named: "ic-profile-placeholder"))
     }
     
     func setRating(stars: Int, ratingStars: [UIImageView]) {
