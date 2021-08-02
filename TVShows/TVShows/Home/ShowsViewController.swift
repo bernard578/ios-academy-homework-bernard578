@@ -28,7 +28,23 @@ class ShowsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         makeShowsRequest()
-    }
+        let profileDetailsItem = UIBarButtonItem(
+                 image: UIImage(named: "ic-profile"),
+                 style: .plain,
+                target: self,
+                action: #selector(profileDetailsActionHandler)
+            )
+        profileDetailsItem.tintColor = UIColor.purple
+          navigationItem.rightBarButtonItem = profileDetailsItem
+      }
+    
+  @objc private func profileDetailsActionHandler() {
+    let storyboard = UIStoryboard(name: "ProfileDetails", bundle: .main)
+    let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+    let navigationController = UINavigationController(rootViewController: profileDetailsViewController)
+    present(navigationController, animated: true)
+        
+  }
 }
 
 // MARK: - Functions

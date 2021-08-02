@@ -86,4 +86,10 @@ class APIManager {
                 completionHandler(dataResponse.result)
         }
     }
+    
+    func makeUserRequest(completionHandler: @escaping (Result<UserResponse, AFError>) -> ()) {
+        sessionManager.request(UserRouter.user(authInfo: APIManager.shared.authInfo!)).validate().responseDecodable(of: UserResponse.self) { dataResponse in
+            completionHandler(dataResponse.result)
+        }
+    }
 }

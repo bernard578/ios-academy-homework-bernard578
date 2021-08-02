@@ -14,6 +14,7 @@ enum UserRouter: URLRequestConvertible {
     case shows(authInfo: AuthInfo)
     case reviews(showId: String, authInfo: AuthInfo)
     case postAReview(showId: String, comment: String, rating: Int, authInfo: AuthInfo)
+    case user(authInfo: AuthInfo)
     
     var path: String {
         switch self {
@@ -28,6 +29,8 @@ enum UserRouter: URLRequestConvertible {
             return "/shows/\(showId.showId)/reviews"
         case .postAReview:
             return "/reviews"
+        case .user:
+            return "/users/me"
         }
     }
     
@@ -43,6 +46,8 @@ enum UserRouter: URLRequestConvertible {
             return .get
         case .postAReview:
             return .post
+        case .user:
+            return .get
         }
     }
     
@@ -73,6 +78,10 @@ enum UserRouter: URLRequestConvertible {
                 "comment": comment,
                 "rating": rating,
             ]
+        case .user(let authInfo):
+            return [
+                "authInfo": authInfo
+            ]
         }
     }
     
@@ -93,6 +102,8 @@ enum UserRouter: URLRequestConvertible {
         case .reviews(_, let authInfo):
             request.headers = HTTPHeaders(authInfo.headers)
         case .postAReview(_, _, _, let authInfo):
+            request.headers = HTTPHeaders(authInfo.headers)
+        case .user(let authInfo):
             request.headers = HTTPHeaders(authInfo.headers)
         default:
             break

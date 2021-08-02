@@ -28,8 +28,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-7c-lIO">
-                                                    <rect key="frame" x="120" y="49.5" width="33" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-7c-lIO">
+                                                    <rect key="frame" x="120" y="50" width="274" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -44,6 +44,7 @@
                                             <constraints>
                                                 <constraint firstItem="03S-BS-mGh" firstAttribute="top" secondItem="SES-HU-ARG" secondAttribute="top" constant="10" id="O1t-Ye-56L"/>
                                                 <constraint firstItem="03S-BS-mGh" firstAttribute="leading" secondItem="SES-HU-ARG" secondAttribute="leading" constant="20" id="Oen-zb-Zed"/>
+                                                <constraint firstAttribute="trailing" secondItem="SUq-7c-lIO" secondAttribute="trailing" constant="20" id="RNa-nS-7by"/>
                                                 <constraint firstItem="SUq-7c-lIO" firstAttribute="leading" secondItem="03S-BS-mGh" secondAttribute="trailing" constant="20" id="XU2-5L-oFh"/>
                                                 <constraint firstAttribute="bottom" secondItem="03S-BS-mGh" secondAttribute="bottom" constant="10" id="g97-On-7mi"/>
                                                 <constraint firstItem="SUq-7c-lIO" firstAttribute="centerY" secondItem="SES-HU-ARG" secondAttribute="centerY" id="wjM-tv-OVH"/>

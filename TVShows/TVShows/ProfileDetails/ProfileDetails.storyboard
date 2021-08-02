@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Details View Controller-->
+        <scene sceneID="oVi-iD-SyM">
+            <objects>
+                <viewController storyboardIdentifier="ProfileDetailsViewController" id="ONX-OO-jGx" customClass="ProfileDetailsViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jyr-da-3hq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKv-rb-laX">
+                                <rect key="frame" x="20" y="74" width="41" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTR-0A-Xgd">
+                                <rect key="frame" x="20" y="114.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3mc-CO-6af"/>
+                                    <constraint firstAttribute="width" constant="100" id="dUG-rL-POA"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUp-LB-qmn">
+                                <rect key="frame" x="20" y="244.5" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="75D-Dk-L53"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAf-Wg-55g">
+                                <rect key="frame" x="135" y="154" width="145" height="30"/>
+                                <state key="normal" title="Change Profile Photo">
+                                    <color key="titleColor" red="0.32156862745098036" green="0.21176470588235294" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ere-23-EHc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jAf-Wg-55g" firstAttribute="leading" secondItem="oTR-0A-Xgd" secondAttribute="trailing" constant="15" id="166-U8-pVh"/>
+                            <constraint firstItem="HKv-rb-laX" firstAttribute="top" secondItem="ere-23-EHc" secondAttribute="top" constant="30" id="8lz-Ac-qUh"/>
+                            <constraint firstItem="xUp-LB-qmn" firstAttribute="top" secondItem="oTR-0A-Xgd" secondAttribute="bottom" constant="30" id="Zl7-Xm-xzf"/>
+                            <constraint firstItem="jAf-Wg-55g" firstAttribute="top" secondItem="ere-23-EHc" secondAttribute="top" constant="110" id="aDw-Ca-6pZ"/>
+                            <constraint firstItem="xUp-LB-qmn" firstAttribute="leading" secondItem="ere-23-EHc" secondAttribute="leading" constant="20" id="nhc-bF-fr6"/>
+                            <constraint firstItem="oTR-0A-Xgd" firstAttribute="top" secondItem="HKv-rb-laX" secondAttribute="bottom" constant="20" id="r4Y-gq-B2v"/>
+                            <constraint firstItem="oTR-0A-Xgd" firstAttribute="leading" secondItem="ere-23-EHc" secondAttribute="leading" constant="20" id="wuH-1D-CuJ"/>
+                            <constraint firstItem="ere-23-EHc" firstAttribute="trailing" secondItem="xUp-LB-qmn" secondAttribute="trailing" constant="20" id="yza-hi-GPp"/>
+                            <constraint firstItem="HKv-rb-laX" firstAttribute="leading" secondItem="ere-23-EHc" secondAttribute="leading" constant="20" id="zNO-V2-VXj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changeProfilePhotoButton" destination="jAf-Wg-55g" id="0fF-Mf-bCA"/>
+                        <outlet property="emailLabel" destination="HKv-rb-laX" id="ftG-nz-lMW"/>
+                        <outlet property="userImage" destination="oTR-0A-Xgd" id="lyt-DN-9QP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubX-Al-Ai2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55.072463768115945" y="68.973214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
