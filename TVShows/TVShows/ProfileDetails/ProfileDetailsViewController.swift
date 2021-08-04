@@ -8,26 +8,55 @@
 import UIKit
 import SVProgressHUD
 import Kingfisher
+import Alamofire
 
-class ProfileDetailsViewController: UIViewController {
+final class ProfileDetailsViewController: UIViewController {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var changeProfilePhotoButton: UIButton!
     
-//    var authInfo = APIManager.shared.authInfo
+    // MARK: - Properties
+    
     private var manager = APIManager()
     private var user: User?
+    private let imagePicker = UIImagePickerController()
+    
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addNavigationLeftBarButtonItem()
         makeUserRequest()
+        setupUI()
     }
-
+    
+    // MARK: - Actions
+    
+    @IBAction func touchChangeProfilePhotoButtonActionHandler(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func touchLogoutButtonActionHandler(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        KeychainAccess.shared.store(authInfo: nil)
+        APIManager.shared.authInfo = nil
+        NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "NotificationDidLogout")))
+    }
 }
 
+// MARK: - Functions
+
 private extension ProfileDetailsViewController {
+    
+    func setupUI() {
+        imagePicker.delegate = self
+        navigationItem.title = "My Account"
+    }
     
     func addNavigationLeftBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -66,4 +95,78 @@ private extension ProfileDetailsViewController {
             with: URL(string: userImageUrl),
             placeholder: UIImage(named: "ic-profile-placeholder"))
     }
+    
+    func storeImage(_ image: UIImage) {
+        guard
+            let imageData = image.jpegData(compressionQuality: 0.9)
+        else { return }
+        
+        let requestData = MultipartFormData()
+        requestData.append(
+            imageData,
+            withName: "image",
+            fileName: "image.jpg",
+            mimeType: "image/jpg"
+        )
+        
+        print(APIManager.shared.authInfo!.headers)
+        AF
+            .upload(multipartFormData: requestData,
+                    to: "https://tv-shows.infinum.academy/users",
+                    method: .put,
+                    headers: HTTPHeaders(APIManager.shared.authInfo!.headers))
+            .validate()
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            print("Data response \(dataResponse)")
+            switch dataResponse.result {
+            case .success(let okJe):
+                print("ok je ovako")
+                print(okJe)
+            case .failure(let nijeOK):
+                print("nije ok")
+                print(nijeOK)
+            }
+        }
+        
+//        manager.makeUserPutRequest(email: emailLabel.text!, requestData: requestData) { [weak self] dataResponse in
+//            switch dataResponse {
+//            case .success(let response):
+//                print("its OK")
+//                print(response.user)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+    }
+
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension ProfileDetailsViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage
+        ] as? UIImage {
+            userImage.contentMode = .scaleAspectFit
+            userImage.image = pickedImage
+            storeImage(pickedImage)
+        }
+
+//        if let pickedImage = info[.originalImage] as? UIImage {
+//            storeImage(pickedImage)
+//        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UINavigationControllerDelegate
+
+extension ProfileDetailsViewController: UINavigationControllerDelegate {
+
 }

@@ -8,13 +8,12 @@
 import Foundation
 import Alamofire
 
-class APIManager {
+final class APIManager {
     
     // MARK: - Properties
     
     static let shared = APIManager()
     var authInfo: AuthInfo?
-    
     private let sessionManager: Alamofire.Session = {
         let configuration = URLSessionConfiguration.default
         return Alamofire.Session(configuration: configuration)
@@ -90,6 +89,18 @@ class APIManager {
     func makeUserRequest(completionHandler: @escaping (Result<UserResponse, AFError>) -> ()) {
         sessionManager.request(UserRouter.user(authInfo: APIManager.shared.authInfo!)).validate().responseDecodable(of: UserResponse.self) { dataResponse in
             completionHandler(dataResponse.result)
+        }
+    }
+    
+    func makeUserPutRequest(email: String, requestData: MultipartFormData, completionHandler: @escaping (Result<UserResponse, AFError>) -> ()) {
+        sessionManager.upload(multipartFormData: requestData, with: UserRouter.userPutRequest(email: email, requestData: requestData, authInfo: APIManager.shared.authInfo!))
+            .validate()
+            .responseDecodable(of: UserResponse.self) { dataResponse in
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                if let authInfo = try? AuthInfo(headers: headers) {
+                    APIManager.shared.authInfo = authInfo
+                }
+                completionHandler(dataResponse.result)
         }
     }
 }

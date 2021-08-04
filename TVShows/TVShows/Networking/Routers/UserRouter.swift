@@ -15,6 +15,7 @@ enum UserRouter: URLRequestConvertible {
     case reviews(showId: String, authInfo: AuthInfo)
     case postAReview(showId: String, comment: String, rating: Int, authInfo: AuthInfo)
     case user(authInfo: AuthInfo)
+    case userPutRequest(email: String, requestData: MultipartFormData,authInfo: AuthInfo)
     
     var path: String {
         switch self {
@@ -24,13 +25,15 @@ enum UserRouter: URLRequestConvertible {
             return "/users"
         case .shows:
             return "/shows"
-        case .reviews(let showId):
-            //print("/shows/\(showId.showId)/reviews")
-            return "/shows/\(showId.showId)/reviews"
+        case .reviews(let showId, _):
+            //return "/shows/\(showId.showId)/reviews"
+        return "/shows/\(showId)/reviews"
         case .postAReview:
             return "/reviews"
         case .user:
             return "/users/me"
+        case .userPutRequest:
+            return "/users"
         }
     }
     
@@ -48,6 +51,8 @@ enum UserRouter: URLRequestConvertible {
             return .post
         case .user:
             return .get
+        case .userPutRequest:
+            return .put
         }
     }
     
@@ -68,7 +73,7 @@ enum UserRouter: URLRequestConvertible {
                 "page": "1",
                 "items": "100"
             ]
-        case .reviews(let showId):
+        case .reviews(_, let showId):
             return [
                 "showId": showId
             ]
@@ -82,6 +87,10 @@ enum UserRouter: URLRequestConvertible {
             return [
                 "authInfo": authInfo
             ]
+        case .userPutRequest(let email, _, _):
+            return [
+                "email": email
+            ]
         }
     }
     
@@ -92,10 +101,9 @@ enum UserRouter: URLRequestConvertible {
                             .asURL()
                             .appendingPathComponent(path)
                             .absoluteString.removingPercentEncoding!)
-        //print(url)
         var request = URLRequest.init(url: url!)
         request.httpMethod = method.rawValue
-        request.timeoutInterval = TimeInterval(10*1000)
+        request.timeoutInterval = TimeInterval(5*1000)
         switch self {
         case .shows(let authInfo):
             request.headers = HTTPHeaders(authInfo.headers)
@@ -105,9 +113,12 @@ enum UserRouter: URLRequestConvertible {
             request.headers = HTTPHeaders(authInfo.headers)
         case .user(let authInfo):
             request.headers = HTTPHeaders(authInfo.headers)
+        case .userPutRequest( _, _, let authInfo):
+            request.headers = HTTPHeaders(authInfo.headers)
         default:
             break
         }
+        
         return try URLEncoding.default.encode(request, with: parameters)
     }
 }

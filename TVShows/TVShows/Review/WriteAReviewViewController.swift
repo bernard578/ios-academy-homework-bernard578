@@ -8,7 +8,7 @@
 import UIKit
 import SVProgressHUD
 
-class WriteAReviewViewController: UIViewController {
+final class WriteAReviewViewController: UIViewController {
     
     // MARK: - Outlets
 
@@ -94,9 +94,7 @@ private extension WriteAReviewViewController {
         [weak self] dataResponse in
             SVProgressHUD.dismiss()
             switch dataResponse {
-            case .success(let response):
-//                print("ok je")
-//                print(response)
+            case .success(_):
                 self?.didSelectClose()
             case .failure(let error):
                 self?.alert(title: "Review error", message: "Error while writing a review")

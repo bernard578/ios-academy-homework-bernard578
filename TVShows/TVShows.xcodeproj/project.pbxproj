@@ -113,7 +113,6 @@
 		F484526326A8C48600EC0C72 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F48DD0B326B1E22700814F26 /* ShowDetailsTableViewCell.swift */,
 				F484526426A8C49300EC0C72 /* Routers */,
 				F4EF4BD426AD916E0054B935 /* APIManager.swift */,
 			);
@@ -202,6 +201,7 @@
 			children = (
 				F48DD0B026B1DA1D00814F26 /* ShowDetails.storyboard */,
 				F48DD0AD26B1D4AC00814F26 /* ShowDetailsViewController.swift */,
+				F48DD0B326B1E22700814F26 /* ShowDetailsTableViewCell.swift */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";

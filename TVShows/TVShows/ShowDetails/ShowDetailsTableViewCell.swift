@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ShowDetailsTableViewCell: UITableViewCell {
+final class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
@@ -19,6 +19,8 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var reviews: [Review] = []
+    private var averageRatingNumber: Double?
 
     // MARK: - Lifecycle methods
         
@@ -38,12 +40,20 @@ extension ShowDetailsTableViewCell {
     func configure(with show: Show) {
         descriptionLabel.text = show.description
         averageRating.text = "\(show.noOfReviews) REVIEWS, \(show.averageRating) AVERAGE"
-        ratingView.rating = show.averageRating
         ratingView.setRoundedRating(Double(show.averageRating))
+        ratingView.rating = Int(show.averageRating)
+        //averageRatingNumber = calculateAverageRating(reviews: reviews)
         ratingView.isUserInteractionEnabled = false
         showImage.kf.setImage(
             with: URL(string: show.imageUrl),
             placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
     }
+    
+//    func calculateAverageRating(reviews: [Review]) -> Double {
+//        var totalNumber = 0
+//        reviews.forEach { totalNumber = totalNumber + $0.rating }
+//        print("total number \(totalNumber)")
+//        return Double(totalNumber / reviews.count)
+//    }
 }
 

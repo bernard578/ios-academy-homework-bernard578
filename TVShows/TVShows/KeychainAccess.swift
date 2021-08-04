@@ -18,7 +18,7 @@ final class KeychainAccess {
         
     }
     
-    func store(authInfo: AuthInfo) {
+    func store(authInfo: AuthInfo?) {
         let encoder = PropertyListEncoder()
         if let encoded = try? encoder.encode(authInfo) {
             try? keychain.set(encoded, key: "authInfo")

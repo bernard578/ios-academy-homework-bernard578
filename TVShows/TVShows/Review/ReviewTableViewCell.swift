@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReviewTableViewCell: UITableViewCell {
+final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
@@ -51,6 +51,7 @@ class ReviewTableViewCell: UITableViewCell {
 }
 
 // MARK: - Functions
+
 extension ReviewTableViewCell {
     
     func configure(with review: Review) {

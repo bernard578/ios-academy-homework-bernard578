@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowTableViewCell: UITableViewCell {
+final class ShowTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
@@ -15,11 +15,6 @@ class ShowTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     
     // MARK: - Lifecycle methods
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        titleLabel.textColor = .red
-    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

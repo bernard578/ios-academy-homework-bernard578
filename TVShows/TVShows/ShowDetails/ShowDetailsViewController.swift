@@ -9,7 +9,7 @@ import UIKit
 import SVProgressHUD
 import KeychainAccess
 
-class ShowDetailsViewController: UIViewController {
+final class ShowDetailsViewController: UIViewController {
     
     // MARK: - Outlets
     

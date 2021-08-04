@@ -8,7 +8,7 @@
 import UIKit
 import SVProgressHUD
 
-class ShowsViewController: UIViewController {
+final class ShowsViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -21,6 +21,8 @@ class ShowsViewController: UIViewController {
     var authInfo = APIManager.shared.authInfo
     private var manager = APIManager()
     private var showReviews: [Review] = []
+    private var notificationToken: NSObjectProtocol?
+    private let NotificationDidLogout = "NotificationDidLogout"
     
     // MARK: - Lifecycle methods
     
@@ -28,23 +30,13 @@ class ShowsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         makeShowsRequest()
-        let profileDetailsItem = UIBarButtonItem(
-                 image: UIImage(named: "ic-profile"),
-                 style: .plain,
-                target: self,
-                action: #selector(profileDetailsActionHandler)
-            )
-        profileDetailsItem.tintColor = UIColor.purple
-          navigationItem.rightBarButtonItem = profileDetailsItem
+        addLeftBarButtonItem()
+        addNotificationToken()
       }
     
-  @objc private func profileDetailsActionHandler() {
-    let storyboard = UIStoryboard(name: "ProfileDetails", bundle: .main)
-    let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
-    let navigationController = UINavigationController(rootViewController: profileDetailsViewController)
-    present(navigationController, animated: true)
-        
-  }
+    deinit {
+        NotificationCenter.default.removeObserver(notificationToken!)
+    }
 }
 
 // MARK: - Functions
@@ -64,17 +56,47 @@ private extension ShowsViewController {
             case .success(let shows):
                 self?.shows = shows.shows
                 self?.tableView.reloadData()
+                //print(self?.shows)
             case .failure(let error):
                 print(error)
             }
         }
-
     }
-}
-
-// MARK: - Private functions
-
-private extension ShowsViewController {
+    
+    @objc private func profileDetailsActionHandler() {
+      let storyboard = UIStoryboard(name: "ProfileDetails", bundle: .main)
+      let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+      let navigationController = UINavigationController(rootViewController: profileDetailsViewController)
+      present(navigationController, animated: true)
+    }
+    
+    func presentLoginViewController() {
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        navigationController?.setViewControllers([loginViewController], animated: true)
+    }
+    
+    func addLeftBarButtonItem() {
+        let profileDetailsItem = UIBarButtonItem(
+                 image: UIImage(named: "ic-profile"),
+                 style: .plain,
+                target: self,
+                action: #selector(profileDetailsActionHandler)
+            )
+        profileDetailsItem.tintColor = UIColor.purple
+          navigationItem.rightBarButtonItem = profileDetailsItem
+    }
+    
+    func addNotificationToken() {
+        notificationToken = NotificationCenter.default.addObserver(
+            forName: Notification.Name(rawValue: NotificationDidLogout),
+            object: nil,
+            queue: nil,
+            using: { notification in
+            //guard self != nil else { return }
+            self.presentLoginViewController()
+        })
+    }
     
     func setupUI() {
         tableView.delegate = self
@@ -90,6 +112,7 @@ private extension ShowsViewController {
         showDetailsViewController.show = currentShow
         self.navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
+
 }
 
 // MARK: - TableView Delegate

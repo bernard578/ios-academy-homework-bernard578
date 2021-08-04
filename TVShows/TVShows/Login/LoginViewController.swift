@@ -11,6 +11,7 @@ import SVProgressHUD
 final class LoginViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet weak var rememberMeButton: UIButton!
     @IBOutlet private weak var emailTextField: BottomLinedTextField!

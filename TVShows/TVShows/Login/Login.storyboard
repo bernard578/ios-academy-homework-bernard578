@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="AUe-QJ-hwF">
             <objects>
-                <viewController id="RGG-Vj-HEB" customClass="LoginViewController" customModule="TVShows" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="RGG-Vj-HEB" customClass="LoginViewController" customModule="TVShows" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8Yc-ty-Y6z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

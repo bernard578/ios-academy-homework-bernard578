@@ -45,12 +45,18 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchLogoutButtonActionHandler:" destination="ONX-OO-jGx" eventType="touchUpInside" id="jZc-eu-uMO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAf-Wg-55g">
                                 <rect key="frame" x="135" y="154" width="145" height="30"/>
                                 <state key="normal" title="Change Profile Photo">
                                     <color key="titleColor" red="0.32156862745098036" green="0.21176470588235294" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchChangeProfilePhotoButtonActionHandler:" destination="ONX-OO-jGx" eventType="touchUpInside" id="CLT-AC-CwZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ere-23-EHc"/>
