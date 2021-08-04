@@ -17,6 +17,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: BottomLinedTextField!
     @IBOutlet private weak var passwordTextField: BottomLinedTextField!
     
+    @IBOutlet weak var passwordVisibilityButton: UIButton!
     // MARK: - Properties
     
     private var currentUser: User?
@@ -30,6 +31,7 @@ final class LoginViewController: UIViewController {
         emailTextField.text = "NoviKorisnik@hotmail.com"
         passwordTextField.text = "Korisnik123"
         setRememberMeButtonImages()
+        setPasswordVisibilityButtonImages()
     }
     
     // MARK: - Actions
@@ -38,6 +40,15 @@ final class LoginViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
         
+    @IBAction func touchPasswordVisibilityActionHandler(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            passwordTextField.isSecureTextEntry = false
+        } else {
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
+    
     @IBAction private func touchLoginButtonActionHandler(_ sender: UIButton) {
         guard
             let email = emailTextField.text,
@@ -102,6 +113,11 @@ private extension LoginViewController {
     func setRememberMeButtonImages() {
         rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
         rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: . selected)
+    }
+    
+    func setPasswordVisibilityButtonImages() {
+        passwordVisibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
+        passwordVisibilityButton.setImage(UIImage(named: "ic-visible"), for: .selected)
     }
         
     func pushShowsViewController(userResponse: UserResponse) {

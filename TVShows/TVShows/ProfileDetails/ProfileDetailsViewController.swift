@@ -116,7 +116,7 @@ private extension ProfileDetailsViewController {
                     method: .put,
                     headers: HTTPHeaders(APIManager.shared.authInfo!.headers))
             .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            .responseDecodable(of: UserResponse.self) { dataResponse in
             print("Data response \(dataResponse)")
             switch dataResponse.result {
             case .success(let okJe):
@@ -127,16 +127,6 @@ private extension ProfileDetailsViewController {
                 print(nijeOK)
             }
         }
-        
-//        manager.makeUserPutRequest(email: emailLabel.text!, requestData: requestData) { [weak self] dataResponse in
-//            switch dataResponse {
-//            case .success(let response):
-//                print("its OK")
-//                print(response.user)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
 
 }

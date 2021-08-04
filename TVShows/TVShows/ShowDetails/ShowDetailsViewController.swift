@@ -55,6 +55,7 @@ private extension ShowDetailsViewController {
         let writeAReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteAReviewViewController") as! WriteAReviewViewController
         let navigationController = UINavigationController(rootViewController: writeAReviewViewController)
         writeAReviewViewController.showId = showId
+        writeAReviewViewController.delegate = self
         present(navigationController, animated: true)
     }
     
@@ -117,3 +118,8 @@ extension ShowDetailsViewController: UITableViewDataSource {
     }
 }
 
+extension ShowDetailsViewController: WriteAReviewDelegate {
+    func didAddReview() {
+        makeReviewsRequest()
+    }
+}

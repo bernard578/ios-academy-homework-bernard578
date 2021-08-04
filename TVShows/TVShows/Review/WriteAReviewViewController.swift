@@ -8,6 +8,10 @@
 import UIKit
 import SVProgressHUD
 
+protocol WriteAReviewDelegate: AnyObject {
+    func didAddReview()
+}
+
 final class WriteAReviewViewController: UIViewController {
     
     // MARK: - Outlets
@@ -26,6 +30,7 @@ final class WriteAReviewViewController: UIViewController {
     private var manager = APIManager()
     var showId: String!
     var authInfo = APIManager.shared.authInfo
+    weak var delegate: WriteAReviewDelegate?
     
     // MARK: - Lifecycle methods
     
@@ -95,6 +100,7 @@ private extension WriteAReviewViewController {
             SVProgressHUD.dismiss()
             switch dataResponse {
             case .success(_):
+                self?.delegate?.didAddReview()
                 self?.didSelectClose()
             case .failure(let error):
                 self?.alert(title: "Review error", message: "Error while writing a review")
