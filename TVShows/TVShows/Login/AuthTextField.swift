@@ -11,12 +11,14 @@ import UIKit
 final class BottomLinedTextField: UITextField {
 
     
-    // MARK: - Private functions
+    // MARK: - Lifecycle methods
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         underlineTextField()
     }
+    
+    // MARK: - Private functions
     
     private func underlineTextField() {
         let bottomLine = CALayer()

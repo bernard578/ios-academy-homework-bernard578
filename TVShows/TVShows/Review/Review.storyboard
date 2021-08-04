@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--WriteAReviewViewController-->
+        <scene sceneID="x9g-RZ-gZY">
+            <objects>
+                <viewController storyboardIdentifier="WriteAReviewViewController" title="WriteAReviewViewController" id="ce8-of-H7j" customClass="WriteAReviewViewController" customModule="TVShows" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="av5-rT-n0A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gp-r2-glb">
+                                <rect key="frame" x="20" y="64" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qg5-lI-l7R" userLabel="RatingButton1">
+                                <rect key="frame" x="20" y="89" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="5l0-oe-GLh"/>
+                                    <constraint firstAttribute="width" constant="25" id="ICF-G2-q3N"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-star-deselected"/>
+                                <connections>
+                                    <action selector="touchStarClickedActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="g5j-tq-ZyC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXO-eF-dJj" userLabel="RatingButton2">
+                                <rect key="frame" x="47" y="89" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Ahu-IA-buC"/>
+                                    <constraint firstAttribute="width" constant="25" id="eJH-MG-2mq"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-star-deselected"/>
+                                <connections>
+                                    <action selector="touchStarClickedActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="t9O-yT-4ij"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXN-tf-yfk" userLabel="RatingButton3">
+                                <rect key="frame" x="74" y="89" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="SVp-0e-CLl"/>
+                                    <constraint firstAttribute="height" constant="25" id="oVV-8Z-77q"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-star-deselected"/>
+                                <connections>
+                                    <action selector="touchStarClickedActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="4CH-c1-yKm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ4-vU-7tm" userLabel="RatingButton4">
+                                <rect key="frame" x="101" y="89" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="5AY-vB-QUd"/>
+                                    <constraint firstAttribute="height" constant="25" id="mRI-dY-Yxq"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-star-deselected"/>
+                                <connections>
+                                    <action selector="touchStarClickedActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="Rzn-RE-Tng"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yW-ra-6QV" userLabel="RatingButton5">
+                                <rect key="frame" x="128" y="89" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="M7q-5c-HKV"/>
+                                    <constraint firstAttribute="height" constant="25" id="kJ6-M2-g8a"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-star-deselected"/>
+                                <connections>
+                                    <action selector="touchStarClickedActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="mUt-yI-okh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-qj-ukP">
+                                <rect key="frame" x="20" y="134" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aFO-lb-75e">
+                                <rect key="frame" x="20" y="165" width="374" height="200"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="WS5-4q-cul"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhu-Wi-U2q">
+                                <rect key="frame" x="20" y="385" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bZ8-wb-jQl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchSubmitButtonActionHandler:" destination="ce8-of-H7j" eventType="touchUpInside" id="HKh-J0-kLi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EcU-Lq-bXW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cQ4-vU-7tm" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="45" id="5zN-Fk-nWK"/>
+                            <constraint firstItem="EcU-Lq-bXW" firstAttribute="trailing" secondItem="aFO-lb-75e" secondAttribute="trailing" constant="20" id="Hzr-6e-YbA"/>
+                            <constraint firstItem="aFO-lb-75e" firstAttribute="top" secondItem="e8x-qj-ukP" secondAttribute="bottom" constant="10" id="KoW-vb-hQP"/>
+                            <constraint firstItem="EcU-Lq-bXW" firstAttribute="trailing" secondItem="fhu-Wi-U2q" secondAttribute="trailing" constant="20" id="Rbm-4U-sgE"/>
+                            <constraint firstItem="zXO-eF-dJj" firstAttribute="leading" secondItem="qg5-lI-l7R" secondAttribute="trailing" constant="2" id="U7n-zK-35z"/>
+                            <constraint firstItem="8yW-ra-6QV" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="45" id="cW2-hR-jkH"/>
+                            <constraint firstItem="aFO-lb-75e" firstAttribute="leading" secondItem="EcU-Lq-bXW" secondAttribute="leading" constant="20" id="eAc-7U-kwq"/>
+                            <constraint firstItem="zXO-eF-dJj" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="45" id="eKr-e7-SR1"/>
+                            <constraint firstItem="oXN-tf-yfk" firstAttribute="leading" secondItem="zXO-eF-dJj" secondAttribute="trailing" constant="2" id="h9t-rb-qp8"/>
+                            <constraint firstItem="e8x-qj-ukP" firstAttribute="top" secondItem="qg5-lI-l7R" secondAttribute="bottom" constant="20" id="hF4-xx-Pla"/>
+                            <constraint firstItem="cQ4-vU-7tm" firstAttribute="leading" secondItem="oXN-tf-yfk" secondAttribute="trailing" constant="2" id="iLV-yx-YAh"/>
+                            <constraint firstItem="fhu-Wi-U2q" firstAttribute="top" secondItem="aFO-lb-75e" secondAttribute="bottom" constant="20" id="mDS-Yt-hit"/>
+                            <constraint firstItem="oXN-tf-yfk" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="45" id="msT-6e-hVB"/>
+                            <constraint firstItem="0gp-r2-glb" firstAttribute="leading" secondItem="EcU-Lq-bXW" secondAttribute="leading" constant="20" id="oKO-tV-dCH"/>
+                            <constraint firstItem="qg5-lI-l7R" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="45" id="r6m-79-Pdv"/>
+                            <constraint firstItem="0gp-r2-glb" firstAttribute="top" secondItem="EcU-Lq-bXW" secondAttribute="top" constant="20" id="sJx-Rj-rV8"/>
+                            <constraint firstItem="qg5-lI-l7R" firstAttribute="leading" secondItem="EcU-Lq-bXW" secondAttribute="leading" constant="20" id="sut-vR-Ide"/>
+                            <constraint firstItem="e8x-qj-ukP" firstAttribute="leading" secondItem="EcU-Lq-bXW" secondAttribute="leading" constant="20" id="sxL-1R-CBi"/>
+                            <constraint firstItem="8yW-ra-6QV" firstAttribute="leading" secondItem="cQ4-vU-7tm" secondAttribute="trailing" constant="2" id="ugQ-eH-i7W"/>
+                            <constraint firstItem="fhu-Wi-U2q" firstAttribute="leading" secondItem="EcU-Lq-bXW" secondAttribute="leading" constant="20" id="urX-V1-YCW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="aFO-lb-75e" id="J54-TB-pMa"/>
+                        <outlet property="ratingButton1" destination="qg5-lI-l7R" id="bNX-f2-KTc"/>
+                        <outlet property="ratingButton2" destination="zXO-eF-dJj" id="F2Q-HF-4dG"/>
+                        <outlet property="ratingButton3" destination="oXN-tf-yfk" id="zSx-uT-v4B"/>
+                        <outlet property="ratingButton4" destination="cQ4-vU-7tm" id="jRr-jS-u1l"/>
+                        <outlet property="ratingButton5" destination="8yW-ra-6QV" id="OMQ-eP-kug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="giM-Dk-c1w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4.3478260869565224" y="51.5625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-star-deselected" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
